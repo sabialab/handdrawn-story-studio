@@ -78,9 +78,9 @@ def main() -> None:
             }
         )
 
-    coin = min(records, key=lambda item: item["area"])
-    bills = sorted((item for item in records if item is not coin), key=lambda item: (item["cy"], item["cx"]))
-    named = list(zip(("a", "b", "c"), bills, strict=True)) + [("coin", coin)]
+    # 按画面位置（先上下后左右）把分量映射到 OUTPUTS 的键上——键名与数量都在顶部换常量区定
+    ordered = sorted(records, key=lambda item: (item["cy"], item["cx"]))
+    named = list(zip(tuple(OUTPUTS), ordered, strict=True))
 
     height, width = alpha_mask.shape
     for name, record in named:
