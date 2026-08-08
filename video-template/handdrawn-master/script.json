@@ -1,0 +1,33 @@
+{
+  "_": "旁白稿示例（虚构故事，仅供演示 schema；与本包 examples/demo-run.md 走的是同一个故事）。按说话人成段写（runs），不是逐句——一个说话人连续说的话是一个合成请求，模型能看见整段上下文，情感连贯性更好；段与段独立，坏哪段补哪段（--only 参数），不必整条重抽。跑法：node $SKILL_DIR/scripts/minimax-tts.js --check <本文件> 先免费体检，再 node $SKILL_DIR/scripts/minimax-tts.js <本文件> -o <工程目录>/public 真合成。",
+  "_音色说明": "voices 把 who（说话人名）映射到 MiniMax voice_id。本示例只写了「叙述者」一个，「奶奶」故意留空——用来演示 scripts/minimax-tts.js 的音色兜底顺序：本文件显式声明 > 环境变量 MINIMAX_VOICE_<说话人名>/MINIMAX_VOICE_DEFAULT > 项目 handdrawn-studio/studio.config.json 的 tts.voices[说话人名] 字段 > 脚本内置的 MiniMax 公共预置音色缺省值。缺省值只用公共预置音色（不是复刻音色），任何账号都能直接调用；如果你有自己的复刻音色槽，写进 studio.config.json 就行，不要把音色 ID 写死进脚本文件本身。",
+  "_停顿说明": "<#x#> 是段内停顿标记，效果是「在自然停顿之上叠加」，不是「设定为」——MiniMax 实测 gap ≈ 430ms + 1000ms×x（即空写不标记也有约 430ms 的自然停顿）。段与段之间的停顿由 gap_after（毫秒，见 R1/R2 的用法）精确拼接控制，模型说了不算，这样最终成片的节奏完全可控。不写 gap_after 的段用账号层缺省值 handdrawn-studio/studio.config.json 的 tts.defaultGapMs（缺省 700ms）。",
+  "_账号层设置不写在这里": "本文件【不带 model / speed / default_gap 三个顶层键】：TTS 模型、全局语速、段间缺省停顿都是账号层面的设置，不是单集内容，读 handdrawn-studio/studio.config.json 的 tts.model（缺省 speech-2.8-hd）/ tts.speed（缺省 1.0）/ tts.defaultGapMs（缺省 700ms）。⚠️ 要按角色单独调语速，走环境变量 MINIMAX_SPEED_<说话人名>（或 MINIMAX_SPEED_DEFAULT）；别为此在这里补一个顶层 speed——顶层 speed 优先级最高，补上去会把按角色的覆写一起压掉。",
+  "_合成产物说明": "本工程随附的 public/voice/timeline.json 是配套的示例帧表——人工核对结构写的演示数据，不是真的跑这份 script.json 合成出来的（真合成后大约 34 秒，见 examples/demo-run.md）。真跑一次 node $SKILL_DIR/scripts/minimax-tts.js 之后，timeline.json（连同 narration.wav 等）会被真实合成结果覆盖；届时 tests/spec-contract.test.mjs 里的 requiredCopy/total_frames 等断言也要跟着换成你自己片子的数据（换片手册惯例：数据随片换，断言结构不换）。",
+  "_稿子写法": "转述词要挑着删：角色自己开口说的话保留，带语气；单纯引出对方发言的转述词可以删掉，因为对方的声音本身就是那个引入，删了念出来更自然。",
+
+  "voices": {
+    "叙述者": "Chinese (Mandarin)_Radio_Host"
+  },
+  "_pronunciation": "多音字钉读音（MiniMax pronunciation_dict.tone，格式 词/(pin1)(yin1)）。按词钉，不按字，本例故事没有需要钉的多音字，留空数组做结构示范。",
+  "pronunciation": [],
+
+  "runs": [
+    {
+      "id": "R1", "who": "叙述者", "gap_after": 700,
+      "tts": "我奶奶叠塑料袋，叠成小三角，一抽屉。<#0.4#>我以前老笑她，超市门口一块钱三十个。",
+      "show": "我奶奶叠塑料袋，叠成小三角，一抽屉。我以前老笑她，超市门口一块钱三十个。"
+    },
+    {
+      "id": "R2", "who": "奶奶", "gap_after": 900,
+      "_": "gap_after 900——比常规 700 长一点，为下一段「去年我搬家」的时间转场留悬念空间。",
+      "tts": "一块钱三十个。<#0.5#>可你真要用的时候，手边一个都没有。",
+      "show": "一块钱三十个。可你真要用的时候，手边一个都没有。"
+    },
+    {
+      "id": "R3", "who": "叙述者",
+      "tts": "去年我搬家。<#0.4#>她坐在抽屉前面一个一个翻，挑出最厚的那几个递给我，说这个装书结实。<#0.6#>我才明白，她攒的不是袋子，是省着给我用的。",
+      "show": "去年我搬家。她坐在抽屉前面一个一个翻，挑出最厚的那几个递给我，说这个装书结实。我才明白，她攒的不是袋子，是省着给我用的。"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "fps": 30,
+  "total_s": 34,
+  "total_frames": 1020,
+  "audio": "narration.wav",
+  "voices": {
+    "叙述者": "Chinese (Mandarin)_Radio_Host",
+    "奶奶": "Chinese (Mandarin)_Radio_Host"
+  },
+  "model": "speech-2.8-hd",
+  "lines": [
+    {
+      "id": "L1",
+      "text": "我奶奶叠塑料袋，叠成小三角，一抽屉。我以前老笑她，超市门口一块钱三十个。",
+      "start_s": 0,
+      "start_frame": 0,
+      "dur_frames": 300
+    },
+    {
+      "id": "L2",
+      "text": "一块钱三十个。可你真要用的时候，手边一个都没有。",
+      "start_s": 10,
+      "start_frame": 300,
+      "dur_frames": 204
+    },
+    {
+      "id": "L3",
+      "text": "去年我搬家。她坐在抽屉前面一个一个翻，挑出最厚的那几个递给我，说这个装书结实。我才明白，她攒的不是袋子，是省着给我用的。",
+      "start_s": 16.8,
+      "start_frame": 504,
+      "dur_frames": 516
+    }
+  ]
+}

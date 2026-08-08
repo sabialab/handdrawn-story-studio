@@ -1,0 +1,17 @@
+{
+  "accountName": "你的账号名",
+  "platform": "视频号",
+  "aspectRatio": "9:16",
+  "tts": {
+    "model": "speech-2.8-hd",
+    "voices": {},
+    "speed": 1.0,
+    "defaultGapMs": 700
+  },
+  "captions": {
+    "minLineSeconds": 2.5,
+    "shortReplySeconds": 1.2,
+    "minFontPx": 40
+  },
+  "bgm": { "volume": 0.1 }
+}

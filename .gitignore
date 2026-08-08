@@ -1,0 +1,28 @@
+# Node
+node_modules/
+
+# 中文字库：由 video-template/handdrawn-master/tools/fetch_fonts.sh 幂等拉取到共享目录，
+# 不入库（体积大、且有官方下载源，随时可重建）。public/fonts 是指向共享目录的目录级软链。
+video-template/assets/fonts/
+video-template/*/public/fonts
+
+# 渲染产物：随时可重渲，不入版本库
+video-template/*/out/
+
+# 生图原图：拆层前的整张 PNG。只有 tools/split_layers.py 拆出来的层入库，
+# 原图体积大且随时可按 references/production.md 第 4.5 节的提示词重生。
+video-template/*/public/raw/
+
+# 每集自己的 TTS/BGM 合成产物（旁白是每个用户自己账号下的合成结果，不该提交到仓库；
+# 随包的 video-template/handdrawn-master/public/voice/timeline.json 是唯一例外——
+# 那是手写的演示数据，见该文件同目录 script.json 的 "_合成产物说明"）。
+video-template/*/public/voice/*.wav
+video-template/*/public/voice/narration.*
+video-template/*/public/voice/R*.wav
+video-template/*/public/voice/R*.subtitle.json
+video-template/*/public/voice/backtest-corpus/
+video-template/*/public/audio/bgm-take-*/
+video-template/*/.media/
+
+# OS 垃圾文件
+.DS_Store

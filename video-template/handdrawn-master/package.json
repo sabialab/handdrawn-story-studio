@@ -1,0 +1,23 @@
+{
+  "name": "handdrawn-master",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "test": "node --test tests/*.test.mjs",
+    "render": "remotion render Story9x16 out/handdrawn-9x16-master.mp4 --codec h264"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.487",
+    "@remotion/fonts": "4.0.487",
+    "@remotion/media-utils": "4.0.487",
+    "@remotion/noise": "4.0.487",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.487"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}
