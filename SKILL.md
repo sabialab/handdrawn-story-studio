@@ -14,7 +14,7 @@ description: 手绘故事片产线。用户丢一两句话素材或直接点题�
 | 自备件 | 用在哪一步 | 没有的话 |
 |---|---|---|
 | **MiniMax API key**（环境变量 `MINIMAX_API_KEY`） | 旁白 TTS 合成；BGM 生成是可选件 | 旁白稿文本照常交付，配音换你手边任何 TTS 工具 |
-| **ChatGPT 桌面端的 Codex** | 拿着执行单生图、拆层、改工程常量、渲染出片 | SPEC 与执行单照常交付，换任何能跑 Remotion 的 Agent 执行 |
+| **Codex 桌面版** | 拿着执行单生图、拆层、改工程常量、渲染出片 | SPEC 与执行单照常交付，换任何能跑 Remotion 的 Agent 执行 |
 
 两条降级路径都写在本文第五节，照做就行。
 
@@ -94,7 +94,7 @@ description: 手绘故事片产线。用户丢一两句话素材或直接点题�
 
 **没有 `MINIMAX_API_KEY`**：第 6 步照写旁白稿，**只跳过第 9 步合成**——第 7 步 `--check` 免费、不调 API，无 key 也照跑；**第 8 步去AI味审校与 key 无关，必须照做**（无 key 时交付物就是那份文本，这道闸更不能拆）。交付旁白稿文本 + 每段的停顿标记说明，告诉用户两条路——自己配一个 key 再回来跑第 9 步，或者拿这份稿子去任何 TTS 工具合成，把音频和逐句时间戳按 `references/narration.md` 第九节的格式放回 `<工程>/public/voice/`。**别拿静音占位冒充成品交付。**
 
-**没有 ChatGPT 桌面端 Codex**：第 11 步照出 SPEC 和执行单，第 12 步改成「交给用户手边任何能跑 Remotion 的 Agent」。母版工程自带 `tools/verify.sh`，本机渲染路径照走（**在片工程目录里敲**，即 `video-template/<新片 slug>/`）：
+**没有 Codex 桌面版**：第 11 步照出 SPEC 和执行单，第 12 步改成「交给用户手边任何能跑 Remotion 的 Agent」。母版工程自带 `tools/verify.sh`，本机渲染路径照走（**在片工程目录里敲**，即 `video-template/<新片 slug>/`）：
 
 ```bash
 tools/verify.sh --quick   # 契约测试 + tsc + 版本门禁，秒级

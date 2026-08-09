@@ -194,7 +194,7 @@ node $SKILL_DIR/scripts/minimax-tts.js video-template/xiaosanjiao/script.json \
 - 开场三秒内、尾牌、封面三处演绎标识。
 - TTS 已冻结；除非用户指出实听错误，不改字、不重抽。
 
-用户把这份单丢进 ChatGPT 桌面端的 Codex。
+用户把这份单丢进 Codex 桌面版。
 
 〔截图：执行单交出去的那一刻 / Codex 开跑的界面〕
 

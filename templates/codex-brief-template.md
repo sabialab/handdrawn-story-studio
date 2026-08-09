@@ -2,7 +2,7 @@
 
 <!-- 写稿段产出。落盘到 <项目根>/handdrawn-studio/drafts/<日期>/codex-brief.md。 -->
 <!-- 这份单随当天的 drafts 走，工程目录不留副本——两处副本迟早漂移。 -->
-<!-- 逐字段填充，不改结构。用户把它整份交给执行体（ChatGPT 桌面端的 Codex，或任何能跑 Remotion 的 Agent）。 -->
+<!-- 逐字段填充，不改结构。用户把它整份交给执行体（Codex 桌面版，或任何能跑 Remotion 的 Agent）。 -->
 
 ## 冻结输入（这些是事实，不要重新发明）
 
